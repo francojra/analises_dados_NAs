@@ -6,6 +6,7 @@
 # Carregar pacotes necessários -------------------------------------------------------------------------------------------------------------
 
 library(tidyverse)
+library(plyr)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
@@ -21,7 +22,6 @@ na.rm = T # Usado após as funções de cálculos
 
 # Quantidade de NAs em cada variável do data frame:
 
-library(plyr)
 quantos.na <- colwise(function(x) sum(is.na(x)))
 quantos.na(dados)
 
