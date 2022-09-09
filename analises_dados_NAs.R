@@ -25,7 +25,7 @@ library(plyr)
 quantos.na <- colwise(function(x) sum(is.na(x)))
 quantos.na(dados)
 
-###################################################
+#####################################################
 
 d <- dados %>%
   select(name, height, mass, hair_color) %>%
@@ -40,4 +40,17 @@ dh <- dados %>%
 dm <- dados %>%
   select(name, height, mass, hair_color) %>%
   drop_na(mass) %>% # Retira apenas os NAs da variável massa (28 NAs)
+  view()
+
+dhc <- dados %>%
+  select(name, height, mass, hair_color) %>%
+  drop_na(hair_color) %>% # Retira apenas os NAs da variável cor do cabelo (5 NAs)
+  view()
+
+# Caso queira analisar todas as variáveis selecionadas em conjunto, pode-se 
+# retirar todos os NAs.
+
+dna <- dados %>%
+  select(name, height, mass, hair_color) %>%
+  drop_na() %>% # Retira todos os NAs
   view()
