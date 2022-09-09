@@ -19,8 +19,25 @@ na.rm = T # Usado após as funções de cálculos
 
 # Análises ---------------------------------------------------------------------------------------------------------------------------------
 
+# Quantidade de NAs em cada variável do data frame:
+
+library(plyr)
+quantos.na <- colwise(function(x) sum(is.na(x)))
+quantos.na(dados)
+
+###################################################
+
 d <- dados %>%
   select(name, height, mass, hair_color) %>%
   view()
 tibble(d) # 87 linhas e 4 colunas
  
+dh <- dados %>%
+  select(name, height, mass, hair_color) %>%
+  drop_na(height) %>% # Retira apenas os NAs da variável altura (6 NAs)
+  view()
+
+dm <- dados %>%
+  select(name, height, mass, hair_color) %>%
+  drop_na(mass) %>% # Retira apenas os NAs da variável massa (28 NAs)
+  view()
